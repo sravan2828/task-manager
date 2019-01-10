@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import Board from './Board';
-import List from './List';
-import Task from './Task';
-import AddTask from './Task/AddTask';
+import Header from './components/Header';
+import Board from './components/Board';
+import List from './components/List';
+import Task from './components/Task';
+import AddTask from './components/Task/AddTask';
 
 class App extends Component {
   render() {
