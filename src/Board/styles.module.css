@@ -1,0 +1,38 @@
+.board {
+  padding-top: 48px;
+}
+
+.lists {
+  display: flex;
+  padding-top: 49px;
+  margin: 0 10px;
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  padding: 10px 20px;
+  z-index: 100;
+  line-height: 1.5;
+  background: #eef2f9;
+}
+
+.header h1 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.addList {
+  background: #89acfa;
+  border-radius: 50%;
+  border: none;
+  font-size: 25px;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  color: #fff;
+  line-height: 1;
+  padding: 7px;
+  width: 40px;
+  height: 40px;
+}

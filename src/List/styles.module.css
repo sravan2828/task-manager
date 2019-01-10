@@ -1,0 +1,42 @@
+.list {
+  min-width: 25%;
+  height: 100%;
+}
+
+.wrapper {
+  background: #f6f8fc;
+  margin: 10px 10px;
+  box-shadow: 0 1px 6px #ccc;
+  border-radius: 3px;
+  padding: 10px;
+  position: relative;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  left: 0;
+  border-radius: 3px 3px 0 0;
+  background: #f5b700;
+}
+
+.list:nth-child(2n) .wrapper::before{
+  background: #dc0073;
+}
+.list:nth-child(3n) .wrapper::before{
+  background: #008bf8;
+}
+.list:nth-child(4n) .wrapper::before{
+  background: #89fc00;
+}
+.list:nth-child(5n) .wrapper::before{
+  background: #00c775;
+}
+
+.header {
+  margin: 0 0 10px;
+}
