@@ -1,3 +1,11 @@
+import uniqid from "uniqid";
+
+const newTask = {
+  id: uniqid(),
+  priority: "medium",
+  text: ""
+}
+
 const INITIAL_STATE = {
   lists: [
 		{
@@ -22,6 +30,7 @@ const INITIAL_STATE = {
 // const lists = [
 //   {
 //     listId: "1",
+//     listName: "first list",
 //     tasks: [
 //       {
 //         id: "1",
@@ -43,17 +52,34 @@ const listReducer = (state = INITIAL_STATE, action) => {
       return {...state, lists: newLists};
 
     case "CREATE_TASK" :
-    const {task,listId} = action.payload;
+    const {listId} = action.payload;
       newLists = lists.map((list) => {
         if(list.id === listId)
         {
           return {
-            listId,
-            tasks: [...list.tasks,task]
+            id:listId,
+            name: list.name,
+            tasks: [...list.tasks,newTask]
           };
         } else { 
           return list;
         }
+      });
+      return {...state, lists: newLists};
+
+    case "UPDATE_TASK_NAME" :
+      console.log(action.payload);
+      let {id,listName} = action.payload;
+      debugger;
+      newLists = lists.map((list) => {
+        if(list.id === id){
+          return {
+            id,
+            name:listName,
+            tasks: list.tasks
+          }
+        }
+        return list;
       });
       return {...state, lists: newLists};
 

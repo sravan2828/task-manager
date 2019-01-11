@@ -11,3 +11,10 @@ export const createTask = task => (
         payload: task
     }
 );
+
+export const updateListName = list => (
+    {
+        type: 'UPDATE_TASK_NAME',
+        payload: list
+    }
+);
