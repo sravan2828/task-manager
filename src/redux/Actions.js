@@ -1,18 +1,25 @@
 export const createList = list => (
     {
-        type: 'CREATE_LIST',
+        type: 'CREATE_NEW_LIST',
         payload: list
     }
 );
 
 export const createTask = task => (
     {
-        type: 'CREATE_TASK',
+        type: 'CREATE_NEW_TASK',
         payload: task
     }
 );
 
 export const updateListName = list => (
+    {
+        type: 'UPDATE_LIST_NAME',
+        payload: list
+    }
+);
+
+export const updateTaskName = list => (
     {
         type: 'UPDATE_TASK_NAME',
         payload: list

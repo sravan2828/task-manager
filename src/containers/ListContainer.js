@@ -27,6 +27,6 @@ const mapDispatchToProps = dispatch => (
         createTask,
         updateListName,
     }, dispatch)
-  );
+);
 
 export default connect(null,mapDispatchToProps)(ListContainer);

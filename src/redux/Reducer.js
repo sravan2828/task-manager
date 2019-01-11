@@ -1,13 +1,7 @@
 import uniqid from "uniqid";
-
-const newTask = {
-  id: uniqid(),
-  priority: "medium",
-  text: ""
-}
-
+import {createNewTask, updateTaskName, updateListName} from "../util";
 const INITIAL_STATE = {
-  lists: [
+	lists: [
 		{
 			id: 1,
 			name: "list one",
@@ -25,67 +19,44 @@ const INITIAL_STATE = {
 			]
 		}
 	],
-  boardName: "scrum board"
+	boardName: "scrum board"
 };
 // const lists = [
 //   {
-//     listId: "1",
-//     listName: "first list",
+//     id: 1,
+//     name: "first list",
 //     tasks: [
 //       {
 //         id: "1",
 //         priority: "LOW",
-//         text:"create new user",
+//         description:"create new user",
 //       }
 //     ]
 //   }
 // ];
 const listReducer = (state = INITIAL_STATE, action) => {
 
-  const { lists } = state;
+	const { lists } = state;
 	let newLists = [];
 	
-  switch (action.type) {
-    case "CREATE_LIST" :
-      let list = action.payload;
-      newLists = [...lists, list];
-      return {...state, lists: newLists};
+	switch (action.type) {
+		case "CREATE_NEW_LIST" :
+			let list = action.payload;
+			newLists = [...lists, list];
+			return {...state, lists: newLists};
 
-    case "CREATE_TASK" :
-    const {listId} = action.payload;
-      newLists = lists.map((list) => {
-        if(list.id === listId)
-        {
-          return {
-            id:listId,
-            name: list.name,
-            tasks: [...list.tasks,newTask]
-          };
-        } else { 
-          return list;
-        }
-      });
-      return {...state, lists: newLists};
+		case "CREATE_NEW_TASK" :
+			return {...state, lists: createNewTask (lists, action)};
 
-    case "UPDATE_TASK_NAME" :
-      console.log(action.payload);
-      let {id,listName} = action.payload;
-      debugger;
-      newLists = lists.map((list) => {
-        if(list.id === id){
-          return {
-            id,
-            name:listName,
-            tasks: list.tasks
-          }
-        }
-        return list;
-      });
-      return {...state, lists: newLists};
+		case "UPDATE_LIST_NAME" :
+			return {...state, lists: updateListName (lists, action)};
 
-    default:
-        return state
-  }
+		case "UPDATE_TASK_NAME" :
+			return {...state, lists: updateTaskName (lists, action)};
+
+		default:
+				return state
+	}
 };
 
 
