@@ -1,43 +1,11 @@
 import {createNewTask, updateTaskName, updateListName, deleteTask, moveTask} from "../util";
+import {initialList} from "../constants";
+
 const INITIAL_STATE = {
-	lists: [
-		{
-			id: 1,
-			name: "list one",
-			tasks:[
-				{
-					id: "1",
-					priority: "low",
-					description: "wear seat belt",
-				},
-				{
-					id: "2",
-					priority: "high",
-					description: "drive fast in race track",
-				},
-				{
-					id: "3",
-					priority: "medium",
-					description: "follow daily routine",
-				}
-			]
-		}
-	],
+	lists: initialList,
 	boardName: "scrum board"
 };
-// const lists = [
-//   {
-//     id: 1,
-//     name: "first list",
-//     tasks: [
-//       {
-//         id: "1",
-//         priority: "LOW",
-//         description:"create new user",
-//       }
-//     ]
-//   }
-// ];
+
 const listReducer = (state = INITIAL_STATE, action) => {
 
 	const { lists } = state;

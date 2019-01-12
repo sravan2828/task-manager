@@ -71,3 +71,15 @@
 .deleteButton {
   float: right;
 }
+
+.movingTask {
+  height: 100px;
+  background: repeating-linear-gradient(
+  135deg,
+  #ebedf3,
+  #ebedf3 5px,
+  #f6f8fc 5px,
+  #f6f8fc 10px
+  );
+  border: 1px solid #ebedf3
+}

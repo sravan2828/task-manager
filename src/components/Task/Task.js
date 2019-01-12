@@ -10,9 +10,13 @@ const taskSource = {
 		return {...props}
 	},
 	endDrag: function (props, monitor){
+		//if the item is drapped in a target block
 		if(monitor.didDrop()){
+			
+			//get the data from drop target
 			const {targetListId} = monitor.getDropResult();
-			console.log("dropTarget", targetListId,props);
+
+			//move item from one list to another
 			props.moveTask({
 				targetListId,
 				sourceListId: props.listId,
@@ -29,6 +33,8 @@ function collection(connect, monitor){
 		isDragging: monitor.isDragging()
 	}
 }
+
+
 class Task extends Component {
 
 	render(){
@@ -43,9 +49,14 @@ class Task extends Component {
 			isDragging
 		} = this.props;
 
-		const opacity = isDragging ? 0: 1; //make the item in list invisible when being dragged
+		//show gradient line while dragging
+		if(isDragging) {
+			return<section className={`${styles.task} ${styles.movingTask}`} ></section>
+		}
+		
+		//draggable item wrapped with connectDragSource
 		return connectDragSource(
-			<section className={styles.task} style={{opacity}}>
+			<section className={styles.task}>
 				<div className={`${styles.priority} ${styles[task.priority]}`}>{task.priority} priority</div>
 				<div className={`${styles.deleteButton}`} onClick={() => deleteTask({listId,taskId: task.id})}><i className="jam jam-archive deleteIcon" /></div>
 				{editText ? <SaveText listId={listId} taskId={task.id} save={saveTaskName} text={task.description}/> :

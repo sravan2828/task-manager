@@ -4,7 +4,11 @@ import { bindActionCreators } from 'redux';
 import Board from "../components/Board"
 import {createList} from "../redux/Actions"
 import uniqid from "uniqid";
+
+// all the components which have redux actions are placed in containers
+// components which only handle view and handling of interactions are placed in component folder
 class BoardContainer extends Component{
+    //create a new empty list
     createNewList = () => {
         const newList = {
 			id: uniqid(),

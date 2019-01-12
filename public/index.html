@@ -40,5 +40,18 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCLtVwdzJzhq3sIJY9a6YoV42rlOSL2DYk",
+        authDomain: "task-manager-564fd.firebaseapp.com",
+        databaseURL: "https://task-manager-564fd.firebaseio.com",
+        projectId: "task-manager-564fd",
+        storageBucket: "task-manager-564fd.appspot.com",
+        messagingSenderId: "710518467040"
+      };
+      firebase.initializeApp(config);
+    </script>
   </body>
 </html>

@@ -16,7 +16,6 @@ function collect (connect, monitor) {
 
 const taskTarget = {
 	drop(props, monitor, component){
-		console.log(props.list.id);
 		return {
 			targetListId: props.list.id
 		}
@@ -35,8 +34,7 @@ class List extends Component {
   }
 
   render(){
-	const {connectDropTarget, hovered, item, list} = this.props;
-	console.log("hovered", hovered, item);
+	const {connectDropTarget, list} = this.props;
 	return connectDropTarget(
 		<section className={styles.list}>
 			<div className={styles.wrapper}>

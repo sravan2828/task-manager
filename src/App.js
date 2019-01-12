@@ -11,7 +11,9 @@ const store = createStore(Reducer);
 class App extends Component {
   render() {
     return (
+      // wrap the app with redux store provider
       <Provider store={ store }>
+        {/* wrap the app with drap and drop context provider */}
         <DragDropContextProvider backend={HTML5Backend}>
           <div className="container">
             <Header />
