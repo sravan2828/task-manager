@@ -67,3 +67,7 @@
 .actions span {
   margin-right: 10px;
 }
+
+.deleteButton {
+  float: right;
+}

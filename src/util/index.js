@@ -1,7 +1,7 @@
 import uniqid from "uniqid";
 
 export const createNewTask = (lists,action) => {
-    let {listId} = action.payload;
+    const {listId} = action.payload;
     const newLists = lists.map((list) => {
         if(list.id === listId)
         {
@@ -13,7 +13,7 @@ export const createNewTask = (lists,action) => {
                     {
                         id: uniqid(),
                         priority: "medium",
-                        text: ""
+                        description: ""
                     }
                 ]
             };
@@ -25,7 +25,7 @@ export const createNewTask = (lists,action) => {
 }
 
 export const updateTaskName = (lists,action) => {
-    let {listId,taskId,description} = action.payload;
+    const {listId,taskId,description} = action.payload;
 	const newLists = lists.map((list) => {
 			if(list.id === listId){
 				const newTasks = list.tasks.map((task) => {
@@ -51,14 +51,29 @@ export const updateTaskName = (lists,action) => {
 };
 
 export const updateListName = (lists,action) => {
-    let newLists = [];
-    let {id,listName} = action.payload;
-    newLists = lists.map((list) => {
+    const {id,listName} = action.payload;
+    const newLists = lists.map((list) => {
         if(list.id === id){
             return {
                 id,
                 name:listName,
                 tasks: list.tasks
+            }
+        }
+        return list;
+    });
+    return newLists;
+};
+
+export const deleteTask = (lists, action) =>{
+    const {listId, taskId} = action.payload;
+    const newLists = lists.map((list) => {
+        if(list.id === listId){
+            const filteredTasks = list.tasks.filter(task=>task.id !== taskId);
+            return {
+                id: list.id,
+                name: list.name,
+                tasks: filteredTasks
             }
         }
         return list;

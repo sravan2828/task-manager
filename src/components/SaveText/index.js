@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 export default class SaveText extends Component {
     state ={
-        text: ''
+        text: this.props.text
     };
 
     changeText = (event) => {

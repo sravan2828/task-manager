@@ -1,5 +1,5 @@
 import uniqid from "uniqid";
-import {createNewTask, updateTaskName, updateListName} from "../util";
+import {createNewTask, updateTaskName, updateListName, deleteTask} from "../util";
 const INITIAL_STATE = {
 	lists: [
 		{
@@ -53,6 +53,9 @@ const listReducer = (state = INITIAL_STATE, action) => {
 
 		case "UPDATE_TASK_NAME" :
 			return {...state, lists: updateTaskName (lists, action)};
+
+		case "DELETE_TASK" :
+			return {...state, lists: deleteTask(lists, action)};
 
 		default:
 				return state
