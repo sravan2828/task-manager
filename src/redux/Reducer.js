@@ -28,8 +28,10 @@ const listReducer = (state = INITIAL_STATE, action) => {
 
 		case "DELETE_TASK" :
 			return {...state, lists: deleteTask(lists, action)};
+
 		case "MOVE_TASK" :
 			return {...state, lists: moveTask(lists, action)};
+			
 		default:
 				return state
 	}
