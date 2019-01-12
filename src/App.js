@@ -4,16 +4,20 @@ import { createStore } from 'redux';
 import Header from './components/Header';
 import BoardContainer from "./containers/BoardContainer";
 import Reducer from './redux/Reducer';
+import { DragDropContextProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 const store = createStore(Reducer);
 class App extends Component {
   render() {
     return (
       <Provider store={ store }>
-        <div className="container">
-        <Header />
-        <BoardContainer/>
-      </div>
+        <DragDropContextProvider backend={HTML5Backend}>
+          <div className="container">
+            <Header />
+            <BoardContainer/>
+          </div>
+        </DragDropContextProvider>
       </Provider>
     );
   }

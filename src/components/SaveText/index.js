@@ -11,7 +11,6 @@ export default class SaveText extends Component {
     save = () => {
         const {save, listId, taskId} = this.props;
         if(taskId){
-            debugger;
             save(listId,taskId,this.state.text)
         }
         save(listId,this.state.text);

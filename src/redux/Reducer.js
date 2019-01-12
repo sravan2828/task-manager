@@ -1,5 +1,4 @@
-import uniqid from "uniqid";
-import {createNewTask, updateTaskName, updateListName, deleteTask} from "../util";
+import {createNewTask, updateTaskName, updateListName, deleteTask, moveTask} from "../util";
 const INITIAL_STATE = {
 	lists: [
 		{
@@ -9,12 +8,17 @@ const INITIAL_STATE = {
 				{
 					id: "1",
 					priority: "low",
-					description: "create new user",
+					description: "wear seat belt",
 				},
 				{
 					id: "2",
 					priority: "high",
-					description: "breack the glass",
+					description: "drive fast in race track",
+				},
+				{
+					id: "3",
+					priority: "medium",
+					description: "follow daily routine",
 				}
 			]
 		}
@@ -56,7 +60,8 @@ const listReducer = (state = INITIAL_STATE, action) => {
 
 		case "DELETE_TASK" :
 			return {...state, lists: deleteTask(lists, action)};
-
+		case "MOVE_TASK" :
+			return {...state, lists: moveTask(lists, action)};
 		default:
 				return state
 	}

@@ -32,3 +32,10 @@ export const deleteTask = data => (
         payload: data
     }
 );
+
+export const moveTask = data => (
+    {
+        type: "MOVE_TASK",
+        payload: data
+    }
+);

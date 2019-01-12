@@ -1,7 +1,7 @@
 import uniqid from "uniqid";
 
 export const createNewTask = (lists,action) => {
-    const {listId} = action.payload;
+    const {listId, description} = action.payload;
     const newLists = lists.map((list) => {
         if(list.id === listId)
         {
@@ -13,7 +13,7 @@ export const createNewTask = (lists,action) => {
                     {
                         id: uniqid(),
                         priority: "medium",
-                        description: ""
+                        description: description || ""
                     }
                 ]
             };
@@ -79,4 +79,12 @@ export const deleteTask = (lists, action) =>{
         return list;
     });
     return newLists;
+};
+
+//while moving task it should be deleted in one list and added to other list
+export const moveTask = (lists, action) =>{
+    const {targetListId, sourceListId, taskId, description} = action.payload;
+    const deletedTaskLists = deleteTask(lists,{payload:{listId: sourceListId, taskId}});
+    const updatedTaskLists = createNewTask(deletedTaskLists, {payload:{listId: targetListId, description}});
+    return updatedTaskLists;
 };

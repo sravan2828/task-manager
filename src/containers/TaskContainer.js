@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import Task from "../components/Task";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {updateTaskName, deleteTask} from '../redux/Actions';
+import {updateTaskName, deleteTask, moveTask} from '../redux/Actions';
 
 class TaskContainer extends Component {
     state ={
@@ -19,14 +19,13 @@ class TaskContainer extends Component {
     showEditText = () => {
         this.setState({editText:true});
     }
-
+    
     render() {
         return(
             <Task 
                 {...this.props}
                 editText={this.state.editText}
                 saveTaskName={this.saveTaskName}
-                deleteTask={this.props.deleteTask}
                 showEditText={this.showEditText}
             />
         );
@@ -36,7 +35,8 @@ class TaskContainer extends Component {
 const mapDispatchToProps = dispatch => (
     bindActionCreators({
         updateTaskName,
-        deleteTask
+        deleteTask,
+        moveTask
     }, dispatch)
 );
 
