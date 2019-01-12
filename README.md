@@ -15,3 +15,5 @@ Constants: contains all the Contants which can be reused across components
 Drag and Drop functionality is created using react DND library which is highly customisable and creates clean logic across components
 
 live demo URL: https://task-manager-564fd.firebaseapp.com/
+
+![Screenshot](draggingTask.png)
