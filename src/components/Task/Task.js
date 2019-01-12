@@ -15,13 +15,14 @@ const taskSource = {
 			
 			//get the data from drop target
 			const {targetListId} = monitor.getDropResult();
-
+			const {listId, task} = props;
 			//move item from one list to another
 			props.moveTask({
 				targetListId,
-				sourceListId: props.listId,
-				taskId: props.task.id,
-				description: props.task.description
+				sourceListId: listId,
+				taskId: task.id,
+				description: task.description,
+				priority: task.priority
 			});
 		}
 	}

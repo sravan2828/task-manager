@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import styles from "./styles.module.css";
 
 export default class SaveText extends Component {
     state ={
@@ -19,8 +20,8 @@ export default class SaveText extends Component {
     render(){
         return(
             <div className ="textBlock">
-                <input type="text" placeholder="please enter text" onChange={this.changeText} value = {this.state.text}/>
-                <button onClick={this.save}>Save</button>
+                <input type="text" className={styles.text} placeholder="please enter text" onChange={this.changeText} value = {this.state.text}/>
+                <button onClick={this.save} className={styles.saveButton}>Save</button>
             </div>
         );
     }
