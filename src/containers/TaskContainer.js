@@ -9,6 +9,7 @@ class TaskContainer extends Component {
         editText: this.props.task.description.length <= 0 //show edit text if description is empty
     };
 
+    //save the task name on click of save button
     saveTaskName = (listId, taskId,text) => {
         if(text && text.length > 0){
           this.props.updateTaskName({listId, taskId, description:text});
@@ -16,6 +17,7 @@ class TaskContainer extends Component {
         }
     }
 
+    //handler to allow editing of task name
     showEditText = () => {
         this.setState({editText:true});
     }

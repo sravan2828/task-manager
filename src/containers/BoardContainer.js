@@ -3,28 +3,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Board from "../components/Board"
 import {createList} from "../redux/Actions"
-import uniqid from "uniqid";
 
-// all the components which have redux actions are placed in containers
-// components which only handle view and handling of interactions are placed in component folder
+//board container gets the state from the redux store and sends down to children.
 class BoardContainer extends Component{
-    //create a new empty list
-    createNewList = () => {
-        const newList = {
-			id: uniqid(),
-			name: "",
-			tasks:[]
-        };
-        this.props.createList(newList);
-    }
     render() {
-        return <Board {...this.props} createNewList={this.createNewList}/>;
+        return <Board {...this.props} />;
     }
 }
 
 const mapStateToProps = (state) => {
     return state;
-  };
+};
   
 const mapDispatchToProps = dispatch => (
     bindActionCreators({

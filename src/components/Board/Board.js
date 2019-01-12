@@ -7,7 +7,7 @@ const Board = (props) => (
     <section className={styles.lists}>
       <ListContainer lists={props.lists}/>
     </section>
-    <button className={styles.addList} onClick={props.createNewList}><i className="jam jam-plus" /></button>
+    <button className={styles.addList} onClick={props.createList}><i className="jam jam-plus" /></button>
   </main>
 );
 

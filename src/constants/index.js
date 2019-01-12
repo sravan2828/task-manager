@@ -1,7 +1,9 @@
+//use item type to handle diffrent types of drap items and and drop target
 export const ItemTypes = {
     TASK: 'task'
 };
 
+//static list for demo purpose
 export const initialList = [
     {
         id: 1,

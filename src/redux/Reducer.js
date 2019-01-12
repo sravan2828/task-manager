@@ -1,6 +1,8 @@
 import {createNewTask, updateTaskName, updateListName, deleteTask, moveTask} from "../util";
 import {initialList} from "../constants";
+import uniqid from "uniqid";
 
+//setting up the initial redux state
 const INITIAL_STATE = {
 	lists: initialList,
 	boardName: "scrum board"
@@ -13,8 +15,12 @@ const listReducer = (state = INITIAL_STATE, action) => {
 	
 	switch (action.type) {
 		case "CREATE_NEW_LIST" :
-			let list = action.payload;
-			newLists = [...lists, list];
+			const newList = {
+				id: uniqid(),
+				name: "",
+				tasks:[]
+			};
+			newLists = [...lists, newList];
 			return {...state, lists: newLists};
 
 		case "CREATE_NEW_TASK" :
@@ -31,7 +37,7 @@ const listReducer = (state = INITIAL_STATE, action) => {
 
 		case "MOVE_TASK" :
 			return {...state, lists: moveTask(lists, action)};
-			
+
 		default:
 				return state
 	}

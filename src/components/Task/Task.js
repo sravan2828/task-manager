@@ -6,7 +6,7 @@ import { DragSource } from 'react-dnd';
 import {ItemTypes} from "../../constants";
 
 const taskSource = {
-	beginDrag: function (props, monitor){
+	beginDrag: function (props){
 		return {...props}
 	},
 	endDrag: function (props, monitor){
@@ -16,6 +16,7 @@ const taskSource = {
 			//get the data from drop target
 			const {targetListId} = monitor.getDropResult();
 			const {listId, task} = props;
+
 			//move item from one list to another
 			props.moveTask({
 				targetListId,
@@ -30,7 +31,9 @@ const taskSource = {
 
 function collection(connect, monitor){
 	return {
+		//to make the item draggable we have to wrap with this function
 		connectDragSource: connect.dragSource(),
+		//to know if the item is being dragged
 		isDragging: monitor.isDragging()
 	}
 }
